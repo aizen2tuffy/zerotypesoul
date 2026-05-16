@@ -7,12 +7,18 @@ local Action = getfenv().Action
 return function(self, timing)
 	local distance = self:distance(self.entity)
 	local action = Action.new()
-	action._when = 580
-	if distance >= 15 then
-		action._when = math.min(590 + distance * 5, 1000)
+	action._when = 400
+	if distance >= 21 then
+		action._when = 660
+	end
+	if distance >= 42 then
+		action._when = 900
+	end
+	if distance >= 64 then
+		action._when = 1180
 	end
 	action._type = "Parry"
-	action.hitbox = Vector3.new(22, 15, 36)
-	action.name = string.format("(%.2f) Dynamic Arrancar Murasama Crit Timing", distance)
+	action.hitbox = Vector3.new(30, 20, 100)
+	action.name = string.format("(%.2f) Dynamic Justice Timing", distance)
 	return self:action(timing, action)
 end

@@ -6,13 +6,12 @@ local Action = getfenv().Action
 ---@param timing AnimationTiming
 return function(self, timing)
 	local distance = self:distance(self.entity)
+
 	local action = Action.new()
-	action._when = 580
-	if distance >= 15 then
-		action._when = math.min(590 + distance * 5, 1000)
-	end
-	action._type = "Parry"
-	action.hitbox = Vector3.new(22, 15, 36)
-	action.name = string.format("(%.2f) Dynamic Arrancar Murasama Crit Timing", distance)
+	action._when = math.min(2550 + distance * 4, 3300)
+	action._type = "Dash"
+	action.hitbox = Vector3.new(75, 75, 85)
+	action.name = string.format("(%.2f) Dynamic Lebron Dunk Timing", distance)
+
 	return self:action(timing, action)
 end
